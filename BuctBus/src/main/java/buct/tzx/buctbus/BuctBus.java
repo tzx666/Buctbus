@@ -5,6 +5,7 @@
  */
 package buct.tzx.buctbus;
 
+import android.content.Context;
 import android.os.Looper;
 
 import java.lang.reflect.Method;
@@ -157,7 +158,7 @@ public class BuctBus {
         invokeMethod(subscriber, event);
     }
 
-    private void postSticky(Object event) {
+    public void postSticky(Object event) {
         CheckOrAdd(event);
         post(event);
     }
@@ -301,5 +302,11 @@ public class BuctBus {
                 buctBus.service = this.service;
             }
         }
+    }
+    public void printList(Context context){
+        if(!isDebugMode){
+            throw new IllegalStateException("no permission! open debug mode first!");
+        }
+
     }
 }

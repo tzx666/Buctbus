@@ -52,6 +52,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subscribemain" />
     <Button
+        android:id="@+id/subscribeback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="发出背景线程事件"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subscribeasync" />
+    <Button
         android:id="@+id/subscribeotheractivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +72,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subscribeasync" />
+        app:layout_constraintTop_toBottomOf="@id/subscribeback" />
     <Button
         android:id="@+id/subscribesticky"
         android:layout_width="wrap_content"
