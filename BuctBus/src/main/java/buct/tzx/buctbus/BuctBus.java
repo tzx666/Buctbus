@@ -7,6 +7,7 @@ package buct.tzx.buctbus;
 
 import android.content.Context;
 import android.os.Looper;
+import android.widget.Toast;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -307,6 +308,15 @@ public class BuctBus {
         if(!isDebugMode){
             throw new IllegalStateException("no permission! open debug mode first!");
         }
-
+        StringBuilder builder = new StringBuilder("");
+        for(Map.Entry<Class<?>, CopyOnWriteArrayList<Subscription>>entry:getClassByEventType.entrySet()){
+            builder.append(entry.getKey().getCanonicalName());
+            builder.append("\n");
+            for(Subscription sb:entry.getValue()){
+                builder.append(sb.toString());
+                builder.append("\n");
+            }
+        }
+        Toast.makeText(context,builder.toString(),Toast.LENGTH_SHORT).show();
     }
 }

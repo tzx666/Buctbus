@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import buct.tzx.base.ModuleEvent
 import buct.tzx.buctbus.BuctBus
 import buct.tzx.buctbus.ThreadMode
 import buct.tzx.buctbus.annotation.Subscribe
 import buct.tzx.realbus.event.*
+import buct.tzx.second.Main1Activity
 
 class MainActivity : AppCompatActivity() {
     // 事件注册
@@ -65,11 +67,12 @@ class MainActivity : AppCompatActivity() {
         }
         subscriblist = findViewById(R.id.subscriblist)
         subscriblist.setOnClickListener {
-            BuctBus.getInstance()
+            BuctBus.getInstance().printList(this)
         }
         subscribeothermodule = findViewById(R.id.subscribeothermodule)
         subscribeothermodule.setOnClickListener {
-
+            BuctBus.getInstance().postSticky(ModuleEvent("666"))
+            startActivity(Intent(this,Main1Activity::class.java))
         }
     }
 
