@@ -43,6 +43,7 @@ public class BuctBus {
     private boolean isDebugMode;
     private boolean enablePostSticky;
     private boolean enableThread;
+    private List<Long>costCount = new ArrayList<>();
     private ThreadLocal<MsgEmail> emailThreadLocal = new ThreadLocal<MsgEmail>() {
         @Override
         protected MsgEmail initialValue() {
@@ -83,7 +84,8 @@ public class BuctBus {
      * 事件的注册类，首先根据类找到对应的所有方法，然后判断方法是否有注解
      * 使用方式 RealBus.getInstance.register(this)
      */
-    public void register(Object obj) {
+    public long register(Object obj) {
+        long cur =System.currentTimeMillis();
         //首先先把这个类的所有方法都找到并注册
         List<SubscriberMethod> methodMods = getMethodMods(obj);
         // 对所有找到对方法进行注册
@@ -91,6 +93,8 @@ public class BuctBus {
         for (SubscriberMethod mod : methodMods) {
             subscribe(obj, mod);
         }
+        costCount.add(System.currentTimeMillis()-cur);
+        return System.currentTimeMillis()-cur;
     }
 
     public void unregister(Object obj) {

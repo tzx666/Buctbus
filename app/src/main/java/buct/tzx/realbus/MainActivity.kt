@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
         // 对于其他的activity，应该做的做法是：在oncreate 进行注册，在ondestory进行解注册
         register = findViewById<Button>(R.id.register)
         register.setOnClickListener {
-            BuctBus.getInstance().register(this)
+            var cost = BuctBus.getInstance().register(this)
+            Toast.makeText(this,"耗时"+cost+"毫秒", Toast.LENGTH_SHORT).show()
         }
         subscribe = findViewById<Button>(R.id.subscribe)
         subscribe.setOnClickListener {
