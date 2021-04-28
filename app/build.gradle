@@ -33,7 +33,8 @@ android {
 }
 
 dependencies {
-    implementation project(':BuctBus')
+//    implementation project(':BuctBus')
+    implementation "buct.tzx.tools:BuctBus:0.1.0"
     implementation project(':second')
     implementation project(':Base')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
